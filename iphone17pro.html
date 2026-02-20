@@ -138,9 +138,83 @@
     }
 
     /* ===== ETAPA 2: CORPO ACIMA DA DOBRA ===== */
+    /* Desktop 3-column layout */
+    @media (min-width: 1024px) {
+      .wrap {
+        display: grid;
+        grid-template-columns: 450px 1fr 340px;
+        gap: 30px;
+        padding: 20px 40px;
+        max-width: 1400px;
+        margin: 0 auto;
+      }
+
+      .hero {
+        margin: 0;
+        padding: 0;
+      }
+
+      .info {
+        margin: 0;
+        padding: 0;
+        border: 0;
+      }
+
+      .buy-column {
+        display: block;
+      }
+
+      .bottom-bar {
+        display: none;
+      }
+    }
+
+    .buy-column {
+      display: none;
+      background: #fff;
+      border: 1px solid #e5e5e5;
+      padding: 20px;
+      height: fit-content;
+      position: sticky;
+      top: 100px;
+      border-radius: 4px;
+    }
+
+    .buy-box-price {
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    .btn-buy-option {
+      width: 100%;
+      background: #fff;
+      color: #333;
+      padding: 12px;
+      border: 1px solid #333;
+      border-radius: 4px;
+      font-weight: 600;
+      cursor: pointer;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .color-opt {
+      border: 1px solid #ddd;
+      padding: 4px;
+      cursor: pointer;
+      text-align: center;
+      width: 70px;
+    }
+
+    .color-opt.is-active {
+      border-color: var(--blue);
+      box-shadow: 0 0 0 1px var(--blue);
+    }
+
     .wrap {
       padding-bottom: 96px;
-      /* espaço para a barra fixa inferior */
     }
 
     /* bloco da imagem */
@@ -1950,24 +2024,15 @@
   <div class="wrap">
     <section class="hero" aria-label="Product hero">
       <div class="hero__imgbox">
-        <img id="productImage" class="hero__img" src="i1.png" alt="iPhone 17 Pro Max Desert Titanium" />
+        <img id="productImage" class="hero__img" src="i1.png" alt="iPhone 17 Pro Max" />
 
         <div class="badge-off" aria-label="Discount badge">
           UP TO 47%
           <span>OFF</span>
         </div>
-
-        <button class="btn-expand" id="expandBtn" aria-label="Expand image">
-          <svg class="expand-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-            stroke-linecap="round" stroke-linejoin="round">
-            <path d="M9 3H3v6"></path>
-            <path d="M15 21h6v-6"></path>
-            <path d="M21 9V3h-6"></path>
-            <path d="M3 15v6h6"></path>
-          </svg>
-        </button>
       </div>
 
+      <!-- Dots moved inside hero for better desktop control -->
       <div class="dots" aria-label="Image carousel indicators">
         <button class="dot is-active" data-index="0" aria-label="Hero"></button>
         <button class="dot" data-index="1" aria-label="Side View"></button>
@@ -1979,7 +2044,7 @@
 
     <section class="info" aria-label="Product info">
       <div class="title-row">
-        <h1 class="title">Apple iPhone 17 Pro Max 256GB - Desert Titanium</h1>
+        <h1 class="title">Apple iPhone 17 Pro Max 256GB</h1>
 
         <button class="share-btn" aria-label="Share">
           <svg class="share-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -1996,11 +2061,70 @@
       <p class="subtitle">Apple</p>
 
       <div class="rating" aria-label="Rating and reviews">
-        <svg class="star" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-          <path d="M12 17.3l-6.18 3.73 1.64-7.03L2 9.24l7.19-.62L12 2l2.81 6.62 7.19.62-5.46 4.76 1.64 7.03z"></path>
-        </svg>
-        <strong>4.6</strong>
-        <a class="reviews-link" href="#" aria-label="Reviews link">3564 Reviews</a>
+        <span style="color: #f2b01e; font-size: 18px;">★★★★★</span>
+        <strong style="margin-left: 5px;">5</strong>
+        <a class="reviews-link" href="#" aria-label="Reviews link"
+          style="border-bottom: 2px dotted #0b79bf; margin-left: 10px;">30 Reviews</a>
+      </div>
+
+      <div style="margin-top: 20px; border-top: 1px solid #f2f2f2; padding-top: 20px;">
+        <div style="margin-bottom: 12px; font-weight: 600; font-size: 14px; color: #333;">Select a colour</div>
+        <div style="display: flex; gap: 10px; margin-bottom: 20px;">
+          <div class="color-opt is-active" data-color="Cosmic Orange">
+            <img src="cosmic-orange.png" style="width: 100%; height: 50px; object-fit: contain;">
+            <div style="font-size: 10px; margin-top: 4px;">Cosmic Orange</div>
+          </div>
+          <div class="color-opt" data-color="Deep Blue">
+            <img src="deep-blue.png" style="width: 100%; height: 50px; object-fit: contain;">
+            <div style="font-size: 10px; margin-top: 4px;">Deep Blue</div>
+          </div>
+          <div class="color-opt" data-color="Silver">
+            <img src="silver.png" style="width: 100%; height: 50px; object-fit: contain;">
+            <div style="font-size: 10px; margin-top: 4px;">Silver</div>
+          </div>
+        </div>
+
+        <ul style="padding-left: 0; list-style: none; font-size: 14px; line-height: 2.2; color: #333;">
+          <li><span style="color: #666; font-size: 18px; margin-right: 8px;">•</span> Free Delivery Available</li>
+          <li><span style="color: #666; font-size: 18px; margin-right: 8px;">•</span> Hassle-Free Exchanges & Returns
+            for 30 Days</li>
+          <li><span style="color: #666; font-size: 18px; margin-right: 8px;">•</span> 12-Month Limited Warranty</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Column 3: Buy Box (Desktop Only) -->
+    <section class="buy-column">
+      <div class="buy-box-price">R 30,699</div>
+      <button class="btn-buy-option">Select an option</button>
+
+      <div style="border: 1px solid #e5e5e5; border-radius: 4px; padding: 15px; background: #fff;">
+        <div style="font-size: 14px; color: #333; margin-bottom: 8px;">
+          <span style="color: #0b79bf; font-weight: 700;">takealot</span>.credit
+        </div>
+        <p style="font-size: 13px; line-height: 1.4; color: #333;">
+          Buy using takealot.credit for <strong>R 2 855</strong> p/m x 12 months and get 1% of your purchase back*.
+        </p>
+        <div
+          style="background: #f4f4f4; padding: 10px; font-size: 12px; border-radius: 4px; margin-top: 10px; display: flex; align-items: center; gap: 8px;">
+          <span
+            style="background: #0b79bf; color: #fff; padding: 2px 4px; border-radius: 4px; font-size: 10px;">more</span>
+          <span>Get 3% with takealotmore</span>
+        </div>
+        <div style="margin-top: 15px; display: flex; align-items: center; justify-content: space-between;">
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <div
+              style="background: #f2b01e; border-radius: 50%; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700;">
+              eB</div>
+            <span style="font-size: 13px;">eB 306,990</span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <div
+              style="background: #0b79bf; color: #fff; border-radius: 50%; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700;">
+              D</div>
+            <span style="font-size: 13px;">306,990</span>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -2016,7 +2140,7 @@
           <div class="hot-badge">HOT OFFER 🔥</div>
           <div class="main-price">
             <span class="currency">R</span>
-            <span class="price">1,499</span>
+            <span class="price">30,699</span>
           </div>
 
           <div class="was-price">
@@ -2043,13 +2167,26 @@
           </div>
 
           <div style="margin-top: 15px; border-top: 1px solid #f2f2f2; padding-top: 15px;">
-            <ul style="padding-left: 18px; font-size: 14px; line-height: 1.6; color: #333;">
-              <li>6.9-inch Super Retina XDR display with Always-On and ProMotion.</li>
-              <li>Titanium design with textured matte glass back.</li>
-              <li>A19 Pro chip with 6-core GPU for pro-class gaming.</li>
-              <li>48MP Pro Fusion camera system for stunning high-res photos.</li>
-              <li>5x Telephoto lens with tetraprism design.</li>
-              <li>USB-C with USB 3 support.</li>
+            <div style="margin-bottom: 12px; font-weight: 600; font-size: 14px; color: #333;">Select a colour</div>
+            <div style="display: flex; gap: 10px; margin-bottom: 20px;">
+              <div class="color-opt is-active" data-color="Cosmic Orange">
+                <img src="cosmic-orange.png" style="width: 50px; height: 50px; border: 1px solid #ddd; padding: 2px;">
+                <div style="font-size: 10px; text-align: center; margin-top: 4px;">Cosmic Orange</div>
+              </div>
+              <div class="color-opt" data-color="Deep Blue">
+                <img src="deep-blue.png" style="width: 50px; height: 50px; border: 1px solid #ddd; padding: 2px;">
+                <div style="font-size: 10px; text-align: center; margin-top: 4px;">Deep Blue</div>
+              </div>
+              <div class="color-opt" data-color="Silver">
+                <img src="silver.png" style="width: 50px; height: 50px; border: 1px solid #ddd; padding: 2px;">
+                <div style="font-size: 10px; text-align: center; margin-top: 4px;">Silver</div>
+              </div>
+            </div>
+
+            <ul style="padding-left: 0; list-style: none; font-size: 14px; line-height: 1.8; color: #333;">
+              <li><span style="color: #666;">•</span> Free Delivery Available</li>
+              <li><span style="color: #666;">•</span> Hassle-Free Exchanges & Returns for 30 Days</li>
+              <li><span style="color: #666;">•</span> 12-Month Limited Warranty</li>
             </ul>
           </div>
 
@@ -2201,44 +2338,29 @@
         </p>
 
         <div style="margin-bottom: 25px;">
-          <h3 style="font-size: 20px; font-weight: 700; margin-bottom: 15px;">Built for Apple Intelligence</h3>
-          <p>The iPhone 17 Pro Max is built for Apple Intelligence, the personal intelligence system that helps you
-            write, express yourself, and get things done effortlessly. With groundbreaking privacy protections, it gives
-            you peace of mind that no one else can access your data — not even Apple.</p>
+          <h3 style="font-size: 18px; font-weight: 700; margin-bottom: 10px;">Display</h3>
+          <p style="font-size: 14px; line-height: 1.6;">
+            iPhone 17 Pro Max<br>
+            Super Retina XDR display<br>
+            6.9-inch (diagonal) all-screen OLED display<br>
+            2868‑by‑1320-pixel resolution at 460 ppi
+          </p>
+          <p style="font-size: 14px; line-height: 1.6; margin-top: 10px;">
+            The iPhone 17 Pro Max display has rounded corners that follow a beautiful curved design, and these corners
+            are within a standard rectangle. When measured as a standard rectangular shape, the screen is 6.86 inches
+            diagonally (actual viewable area is less).
+          </p>
+          <ul style="font-size: 14px; line-height: 1.8; margin-top: 10px; padding-left: 20px;">
+            <li>Dynamic Island</li>
+            <li>Always-On display</li>
+            <li>ProMotion technology with adaptive refresh rates up to 120Hz</li>
+            <li>HDR display</li>
+            <li>True Tone</li>
+            <li>Wide color (P3)</li>
+            <li>Haptic Touch</li>
+            <li>2,000,000:1 contrast ratio (typical)</li>
+          </ul>
         </div>
-
-        <div style="margin-bottom: 25px;">
-          <h3 style="font-size: 20px; font-weight: 700; margin-bottom: 15px;">Take Total Camera Control</h3>
-          <p>Now you can take the perfect photo or video in record time. Camera Control gives you an easier way to
-            quickly access camera tools. Simply slide your finger to adjust camera functions like exposure or depth of
-            field, and toggle through each lens or use digital zoom to frame your shot — just the way you like it.</p>
-        </div>
-
-        <div style="margin-bottom: 25px;">
-          <h3 style="font-size: 20px; font-weight: 700; margin-bottom: 15px;">Pro Video and Photos</h3>
-          <p>The iPhone 17 Pro Max takes video recording to a whole new level with 4K 120 fps Dolby Vision — our highest
-            resolution and frame rate combination yet. Powered by the new A19 Pro chip, you can now capture in 4K 120
-            fps Dolby Vision in video mode or slo-mo.</p>
-        </div>
-
-        <p class="desc-subhead">Features:</p>
-        <ul class="desc-list">
-          <li>6.9-inch Super Retina XDR display with ProMotion.</li>
-          <li>Titanium design with textured matte glass back.</li>
-          <li>Ceramic Shield front, tougher than any smartphone glass.</li>
-          <li>A19 Pro chip with 6-core GPU.</li>
-          <li>48MP Pro Fusion camera system.</li>
-          <li>5x Telephoto lens with tetraprism design.</li>
-          <li>USB-C with USB 3 support.</li>
-          <li>Dynamic Island and Action button.</li>
-        </ul>
-
-        <p class="desc-subhead">What's in the box</p>
-        <p>
-          1 x Apple iPhone 17 Pro Max<br>
-          1 x USB-C Charge Cable (1m)<br>
-          1 x Documentation
-        </p>
       </div>
     </div>
   </section>
@@ -2294,52 +2416,39 @@
         <div class="pi-table pi-table--full">
           <div class="pi-row">
             <div class="pi-key">Categories</div>
-            <div class="pi-val pi-links">
-              <a href="#">Cellular &amp; GPS</a> /<br>
-              <a href="#">Cell Phones</a> /<br>
-              <a href="#">Smartphones</a> /<br>
-              <a href="#">iPhones</a>
-            </div>
+            <div class="pi-val pi-links">Cellphones & Wearables / Cellphones / Smartphones</div>
           </div>
-
           <div class="pi-row">
             <div class="pi-key">Brand</div>
-            <div class="pi-val pi-links"><a href="#">Apple</a></div>
+            <div class="pi-val">Apple</div>
           </div>
-
           <div class="pi-row">
-            <div class="pi-key">Processor</div>
-            <div class="pi-val">A19 Pro chip</div>
+            <div class="pi-key">Component RAM Size</div>
+            <div class="pi-val">12.0GB</div>
           </div>
-
-          <div class="pi-row">
-            <div class="pi-key">Screen Size</div>
-            <div class="pi-val">6.9-inch</div>
-          </div>
-
-          <div class="pi-row">
-            <div class="pi-key">Storage Capacity</div>
-            <div class="pi-val">256GB</div>
-          </div>
-
           <div class="pi-row">
             <div class="pi-key">Warranty</div>
             <div class="pi-val">Limited (12 months)</div>
           </div>
-
           <div class="pi-row">
-            <div class="pi-key">Materials</div>
-            <div class="pi-val">Titanium</div>
+            <div class="pi-key">Lens Types</div>
+            <div class="pi-val">Wide Angle</div>
           </div>
-
           <div class="pi-row">
-            <div class="pi-key">Operating System</div>
-            <div class="pi-val">iOS 26</div>
+            <div class="pi-key">Audio Jacks</div>
+            <div class="pi-val">No Jack</div>
           </div>
-
           <div class="pi-row">
-            <div class="pi-key">Barcode</div>
-            <div class="pi-val">195949641774</div>
+            <div class="pi-key">Screen Size</div>
+            <div class="pi-val">6.9"</div>
+          </div>
+          <div class="pi-row">
+            <div class="pi-key">Battery Type</div>
+            <div class="pi-val">Lithium-ion</div>
+          </div>
+          <div class="pi-row">
+            <div class="pi-key">Model</div>
+            <div class="pi-val">MFYP4AF/A</div>
           </div>
         </div>
       </div>
@@ -2471,17 +2580,15 @@
 
     <div class="rv-summary">
       <div class="rv-summary-left">
-        <div class="rv-big">4.6</div>
+        <div class="rv-big">5</div>
       </div>
 
       <div class="rv-summary-mid">
-        <div class="rv-stars" aria-label="Stars">
-          <span>★</span><span>★</span><span>★</span><span>★</span><span class="rv-star-dim">★</span>
-        </div>
+        <div style="color: #f2b01e; font-size: 24px; letter-spacing: 2px;">★★★★★</div>
       </div>
 
       <div class="rv-summary-right">
-        <div class="rv-total">3564 Reviews</div>
+        <div class="rv-total">30 Reviews</div>
       </div>
     </div>
 
@@ -2489,41 +2596,35 @@
       <div class="rv-bar-row">
         <div class="rv-bar-left">5 <span class="rv-bar-star">★</span></div>
         <div class="rv-bar-track">
-          <div class="rv-bar-fill rv5"></div>
+          <div class="rv-bar-fill" style="width: 96%; background: #1c8644; height: 100%; border-radius: 999px;"></div>
         </div>
-        <div class="rv-bar-num">2624</div>
+        <div class="rv-bar-num">29</div>
       </div>
 
       <div class="rv-bar-row">
         <div class="rv-bar-left">4 <span class="rv-bar-star">★</span></div>
         <div class="rv-bar-track">
-          <div class="rv-bar-fill rv4"></div>
+          <div class="rv-bar-fill" style="width: 4%; background: #1c8644; height: 100%; border-radius: 999px;"></div>
         </div>
-        <div class="rv-bar-num">685</div>
+        <div class="rv-bar-num">1</div>
       </div>
 
       <div class="rv-bar-row">
         <div class="rv-bar-left">3 <span class="rv-bar-star">★</span></div>
-        <div class="rv-bar-track">
-          <div class="rv-bar-fill rv3"></div>
-        </div>
-        <div class="rv-bar-num">104</div>
+        <div class="rv-bar-track"></div>
+        <div class="rv-bar-num">0</div>
       </div>
 
       <div class="rv-bar-row">
         <div class="rv-bar-left">2 <span class="rv-bar-star">★</span></div>
-        <div class="rv-bar-track">
-          <div class="rv-bar-fill rv2"></div>
-        </div>
-        <div class="rv-bar-num">40</div>
+        <div class="rv-bar-track"></div>
+        <div class="rv-bar-num">0</div>
       </div>
 
       <div class="rv-bar-row">
         <div class="rv-bar-left">1 <span class="rv-bar-star">★</span></div>
-        <div class="rv-bar-track">
-          <div class="rv-bar-fill rv1"></div>
-        </div>
-        <div class="rv-bar-num">111</div>
+        <div class="rv-bar-track"></div>
+        <div class="rv-bar-num">0</div>
       </div>
 
       <a href="#" class="rv-write">Write Review</a>
@@ -2539,13 +2640,16 @@
       <div class="rv-item">
         <div class="rv-item-stars">★★★★★</div>
         <div class="rv-item-head">
-          <strong>Refilwe</strong> - 09 Aug 2021
+          <strong>Povvo</strong> - 26 Sep 2025
         </div>
-        <div class="rv-item-sub">(Reviewed on day of purchase)</div>
+        <div class="rv-item-sub">(Reviewed 7 days after purchase) | Colour: Deep Blue</div>
         <div class="rv-item-text">
-          This Luxury Kitchen stove set is incredible. The precision gas burners and the high-quality pot set
-          accommodate all my
-          everyday cooking needs like boiling, frying, and slow cooking.
+          I must commend Takealot for delivering the product on the date stipulated, and early in the morning at that! I
+          was so so happy with this. Thank you. The iPhone 17 Pro Max itself is amazing and just such a game changer...
+          literally. It's snappy and runs so fast, it could usurp Usain Bolt! The slightly bigger screen, while not
+          considerably noticeable at first, does make a difference, especially when watching content on-the-go, like
+          Netflix and similar platforms. The only qualm I have is that the iPhone box arrived damaged, and Takealot did
+          not use any bubble wrap to protect the product. Just brown paper, which could be risky...
         </div>
       </div>
 
@@ -2553,13 +2657,11 @@
       <div class="rv-item">
         <div class="rv-item-stars">★★★★★</div>
         <div class="rv-item-head">
-          <strong>Nomsa Mkhize</strong> - 27 Sep 2021
+          <strong>Tristan</strong> - 29 Sep 2025
         </div>
-        <div class="rv-item-sub">(Reviewed 15 days after purchase)</div>
+        <div class="rv-item-sub">(Reviewed 7 days after purchase) | Colour: Cosmic Orange</div>
         <div class="rv-item-text">
-          Don't wait. Perfect.<br><br>
-          This stove set is one of the best I’ve owned. The gas burners are responsive and the heavy-duty pot
-          set works perfectly for high-heat cooking. Highly recommended.
+          Incredible performance amazing colour way. Very satisfied with my purchase.
         </div>
       </div>
 
@@ -2567,13 +2669,13 @@
       <div class="rv-item">
         <div class="rv-item-stars">★★★★★</div>
         <div class="rv-item-head">
-          <strong>Robynn</strong> - 29 May 2023
+          <strong>Sunny</strong> - 30 Sep 2025
         </div>
-        <div class="rv-item-sub">(Reviewed 7 days after purchase)</div>
+        <div class="rv-item-sub">(Reviewed 11 days after purchase) | Colour: Deep Blue</div>
         <div class="rv-item-text">
-          Perfect, ideal for home use <br><br>
-          Very good quality stove set. The 4 electric plates are ideal for home use and the cookware set covers all
-          basic needs. Works perfectly for everyday cooking.
+          <strong>Incredible Phone</strong><br><br>
+          Don't waste your time reading this just hurry up & buy the phone. The performance of this phone is truly
+          unrivalled & I couldn't be more happier with my purchase!
         </div>
       </div>
 
@@ -2581,12 +2683,15 @@
       <div class="rv-item">
         <div class="rv-item-stars">★★★★★</div>
         <div class="rv-item-head">
-          <strong>Lize</strong> - 26 Jun 2023
+          <strong>Abrie</strong> - 15 Oct 2025
         </div>
-        <div class="rv-item-sub">(Reviewed 14 days after purchase)</div>
+        <div class="rv-item-sub">(Reviewed 7 days after purchase) | Colour: Deep Blue</div>
         <div class="rv-item-text">
-          I really like this microwave. It’s modern, simple to use and does exactly what it promises. Popcorn, reheating
-          meals and defrosting are all effortless.
+          Pre ordered mine almost month ago and due to a short in the iPhone 17 Pro Max it too a while to get here but
+          damn im absolutely in love with this phone. I mostly bought it for the camera and it does not disappoint.
+          Battery time is insane. Yes the iphone 17 unfortunately is not made out of Titanium anymore so I'll highly
+          recommend picking up a UAG case along with your phone just to make sure it does not pick up unnecessary
+          scratches, but I'll definitely recommend this phone to anyone. Thanks Takealot for always supplying!!
         </div>
       </div>
 
@@ -2594,12 +2699,11 @@
       <div class="rv-item">
         <div class="rv-item-stars">★★★★★</div>
         <div class="rv-item-head">
-          <strong>orifha</strong> - 04 Sep 2023
+          <strong>Jenna</strong> - 06 Oct 2025
         </div>
-        <div class="rv-item-sub">(Reviewed 7 days after purchase)</div>
+        <div class="rv-item-sub">(Reviewed 3 days after purchase) | Colour: Silver</div>
         <div class="rv-item-text">
-          Great value for money. The stove heats fast, looks great in the kitchen and the controls are
-          intuitive. Perfect for everyday cooking needs.
+          EXCELLENT Battery Life!!! Great phone all round.
         </div>
       </div>
     </div>
