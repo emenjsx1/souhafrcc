@@ -217,19 +217,52 @@
       padding-bottom: 96px;
     }
 
-    /* bloco da imagem */
-    .hero {
-      position: relative;
-      background: #fff;
-      padding: 12px 12px 8px;
+    /* Hero thumbnails desktop */
+    @media (min-width: 1024px) {
+      .hero {
+        display: flex;
+        gap: 15px;
+      }
+
+      .hero-thumbs {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        width: 60px;
+      }
+
+      .hero-thumb {
+        width: 60px;
+        height: 60px;
+        border: 1px solid #e5e5e5;
+        padding: 5px;
+        cursor: pointer;
+      }
+
+      .hero-thumb.is-active {
+        border-color: var(--blue);
+      }
+
+      .hero__imgbox {
+        flex: 1;
+      }
+
+      .dots {
+        display: none;
+      }
+
+      /* Hide dots on desktop in favor of thumbs */
     }
 
-    .hero__imgbox {
-      position: relative;
-      width: 100%;
-      border-radius: 8px;
-      overflow: hidden;
-      background: #fff;
+    .hero-thumbs {
+      display: none;
+    }
+
+    .title-row {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
     }
 
     .hero__img {
@@ -2023,6 +2056,13 @@
   <!-- ETAPA 2: CORPO ACIMA DA DOBRA -->
   <div class="wrap">
     <section class="hero" aria-label="Product hero">
+      <div class="hero-thumbs">
+        <img src="i1.png" class="hero-thumb is-active" onclick="setActive(0)">
+        <img src="i2.png" class="hero-thumb" onclick="setActive(1)">
+        <img src="i3.png" class="hero-thumb" onclick="setActive(2)">
+        <img src="i4.png" class="hero-thumb" onclick="setActive(3)">
+        <img src="i5.png" class="hero-thumb" onclick="setActive(4)">
+      </div>
       <div class="hero__imgbox">
         <img id="productImage" class="hero__img" src="i1.png" alt="iPhone 17 Pro Max" />
 
@@ -2032,7 +2072,7 @@
         </div>
       </div>
 
-      <!-- Dots moved inside hero for better desktop control -->
+      <!-- Dots (Mobile Only) -->
       <div class="dots" aria-label="Image carousel indicators">
         <button class="dot is-active" data-index="0" aria-label="Hero"></button>
         <button class="dot" data-index="1" aria-label="Side View"></button>
@@ -2382,10 +2422,9 @@
       <div class="pi-row">
         <div class="pi-key">Categories</div>
         <div class="pi-val pi-links">
-          <a href="#">Cellular &amp; GPS</a> /<br>
-          <a href="#">Cell Phones</a> /<br>
-          <a href="#">Smartphones</a> /<br>
-          <a href="#">iPhones</a>
+          <a href="#">Cellphones &amp; Wearables</a> /
+          <a href="#">Cellphones</a> /
+          <a href="#">Smartphones</a>
         </div>
       </div>
 
@@ -2396,7 +2435,7 @@
 
       <div class="pi-row">
         <div class="pi-key">Model</div>
-        <div class="pi-val">iPhone 17 Pro Max</div>
+        <div class="pi-val">MFYP4AF/A</div>
       </div>
     </div>
 
@@ -2466,9 +2505,9 @@
       <div class="rv-preview-title">Reviews</div>
 
       <div class="rv-preview-meta">
-        <span class="rv-star">★</span>
-        <span class="rv-score">4.6</span>
-        <span class="rv-count">3564 reviews</span>
+        <span class="rv-star" style="color: #f2b01e;">★</span>
+        <span class="rv-score">5</span>
+        <span class="rv-count">30 reviews</span>
       </div>
     </div>
 
@@ -2764,15 +2803,17 @@
     function setActive(index) {
       if (!productImage) return;
 
-      // normaliza o index
       currentIndex = (index + images.length) % images.length;
-
       productImage.src = images[currentIndex];
 
-      // dots
+      // dots (Mobile)
       dots.forEach((d, i) => d.classList.toggle("is-active", i === currentIndex));
 
-      // mantém modal em sync se estiver aberto
+      // thumbs (Desktop)
+      const thumbs = Array.from(document.querySelectorAll(".hero-thumb"));
+      thumbs.forEach((t, i) => t.classList.toggle("is-active", i === currentIndex));
+
+      // mantém modal em sync
       const modal = document.getElementById("modal");
       const modalImg = document.getElementById("modalImg");
       if (modal && modalImg && modal.classList.contains("is-open")) {
