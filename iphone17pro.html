@@ -137,6 +137,48 @@
       pointer-events: none;
     }
 
+    .hotpromo-bar {
+      background: #cc1c1c;
+      color: #fff;
+      padding: 10px;
+      text-align: center;
+      font-weight: 800;
+      font-size: 14px;
+      position: sticky;
+      top: 0;
+      z-index: 1001;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      letter-spacing: 0.5px;
+    }
+
+    .hotpromo-bar .timer {
+      background: #fff;
+      color: #cc1c1c;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-family: 'Courier New', Courier, monospace;
+    }
+
+    /* Adjust topbar position since hotpromo is fixed too */
+    @media (min-width: 1024px) {
+      .topbar {
+        top: 40px;
+      }
+
+      .buy-column {
+        top: 140px;
+      }
+    }
+
+    @media (max-width: 1023px) {
+      .topbar {
+        top: 40px;
+      }
+    }
+
     /* ===== ETAPA 2: CORPO ACIMA DA DOBRA ===== */
     /* Desktop 3-column layout */
     @media (min-width: 1024px) {
@@ -2027,6 +2069,12 @@
 </head>
 
 <body>
+  <!-- HOT PROMO BAR -->
+  <div class="hotpromo-bar" id="headerPromo">
+    🔥 HOT PROMO: LIMITED TIME ONLY!
+    <span class="timer" id="headerTimer">00:00:00</span>
+  </div>
+
   <!-- ETAPA 1: TOP BAR -->
   <header class="topbar" aria-label="Top Bar">
     <div class="topbar__left">
@@ -2829,6 +2877,25 @@
         modalImg.src = images[currentIndex];
       }
     }
+
+    // Header Promo Timer
+    function updateHeaderTimer() {
+      const timerEl = document.getElementById('headerTimer');
+      if (!timerEl) return;
+
+      const now = new Date();
+      const end = new Date();
+      end.setHours(23, 59, 59); // reset every day at midnight for urgency
+
+      const diff = end - now;
+      const h = Math.floor(diff / 3600000);
+      const m = Math.floor((diff % 3600000) / 60000);
+      const s = Math.floor((diff % 60000) / 1000);
+
+      timerEl.textContent = `${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
+    }
+    setInterval(updateHeaderTimer, 1000);
+    updateHeaderTimer();
 
     // click nos dots
     dots.forEach(dot => {
