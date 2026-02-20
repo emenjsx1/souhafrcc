@@ -2855,6 +2855,16 @@
     <img src="takealot-credit.png" alt="takealot.credit shop now pay later" loading="lazy">
   </div>
 
+  <!-- SALES NOTIFICATION POPUP -->
+  <div class="sales-popup" id="salesPopup">
+    <img src="i1.png" class="sales-popup__img" id="salesPopupImg">
+    <div class="sales-popup__text">
+      <strong id="salesPopupName">John S.</strong>
+      <span id="salesPopupAction">just purchased an iPhone 17 Pro Max</span>
+      <div style="font-size: 10px; color: #888; margin-top: 2px;" id="salesPopupTime">2 minutes ago</div>
+    </div>
+  </div>
+
 
   <script>
 
@@ -3160,7 +3170,41 @@
       el.textContent = isTomorrow ? "Get It Tomorrow!" : formatRange(start, end);
     })();
 
+    // Sales Notification Logic
+    const salesPopup = document.getElementById('salesPopup');
+    const salesName = document.getElementById('salesPopupName');
+    const salesTime = document.getElementById('salesPopupTime');
 
+    if (salesPopup) {
+      const buyers = [
+        { name: "Sarah M. from Cape Town", time: "just now" },
+        { name: "Johan v.d. M. from Pretoria", time: "2 minutes ago" },
+        { name: "Thabo K. from Sandton", time: "5 minutes ago" },
+        { name: "Emily W. from Durban", time: "8 minutes ago" },
+        { name: "Michael B. from Constantia", time: "12 minutes ago" },
+        { name: "Naledi R. from Bloemfontein", time: "15 minutes ago" }
+      ];
+
+      let buyerIdx = 0;
+
+      function showNextSale() {
+        const buyer = buyers[buyerIdx];
+        salesName.textContent = buyer.name;
+        salesTime.textContent = buyer.time;
+
+        salesPopup.classList.add('is-visible');
+
+        setTimeout(() => {
+          salesPopup.classList.remove('is-visible');
+          buyerIdx = (buyerIdx + 1) % buyers.length;
+        }, 5000);
+      }
+
+      setTimeout(() => {
+        showNextSale();
+        setInterval(showNextSale, 15000);
+      }, 3000);
+    }
   </script>
 </body>
 
