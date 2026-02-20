@@ -267,27 +267,36 @@
 
     .hero__img {
       width: 100%;
-      height: 360px;
-      /* altura semelhante ao print */
+      height: 320px;
       object-fit: contain;
       display: block;
       background: #fff;
+      transition: opacity 0.3s ease;
+    }
+
+    @media (max-width: 1023px) {
+      .hero__img {
+        height: 280px;
+        /* Reduced for smaller screens */
+        margin-top: 10px;
+      }
     }
 
     /* badge “27% OFF” */
     .badge-off {
       position: absolute;
-      left: 12px;
-      top: 12px;
+      left: 10px;
+      top: 10px;
       background: var(--blue);
       color: #fff;
       font-weight: 700;
-      font-size: 13px;
-      line-height: 1.05;
-      padding: 10px 10px;
-      border-radius: 6px;
+      font-size: 11px;
+      line-height: 1.1;
+      padding: 6px 8px;
+      border-radius: 4px;
       text-align: center;
-      width: 58px;
+      z-index: 10;
+      text-transform: uppercase;
     }
 
     .badge-off span {
@@ -2110,16 +2119,16 @@
       <div style="margin-top: 20px; border-top: 1px solid #f2f2f2; padding-top: 20px;">
         <div style="margin-bottom: 12px; font-weight: 600; font-size: 14px; color: #333;">Select a colour</div>
         <div style="display: flex; gap: 10px; margin-bottom: 20px;">
-          <div class="color-opt is-active" data-color="Cosmic Orange">
-            <img src="cosmic-orange.png" style="width: 100%; height: 50px; object-fit: contain;">
+          <div class="color-opt is-active" data-color="Cosmic Orange" style="background: #f7941d22;">
+            <img src="cosmic-orange.png" style="width: 100%; height: 50px; object-fit: contain; background: #f7941d;">
             <div style="font-size: 10px; margin-top: 4px;">Cosmic Orange</div>
           </div>
-          <div class="color-opt" data-color="Deep Blue">
-            <img src="deep-blue.png" style="width: 100%; height: 50px; object-fit: contain;">
+          <div class="color-opt" data-color="Deep Blue" style="background: #2c3e5022;">
+            <img src="deep-blue.png" style="width: 100%; height: 50px; object-fit: contain; background: #2c3e50;">
             <div style="font-size: 10px; margin-top: 4px;">Deep Blue</div>
           </div>
-          <div class="color-opt" data-color="Silver">
-            <img src="silver.png" style="width: 100%; height: 50px; object-fit: contain;">
+          <div class="color-opt" data-color="Silver" style="background: #bdc3c722;">
+            <img src="silver.png" style="width: 100%; height: 50px; object-fit: contain; background: #bdc3c7;">
             <div style="font-size: 10px; margin-top: 4px;">Silver</div>
           </div>
         </div>
@@ -2135,7 +2144,7 @@
 
     <!-- Column 3: Buy Box (Desktop Only) -->
     <section class="buy-column">
-      <div class="buy-box-price">R 30,699</div>
+      <div class="buy-box-price">R 1,497</div>
       <button class="btn-buy-option">Select an option</button>
 
       <div style="border: 1px solid #e5e5e5; border-radius: 4px; padding: 15px; background: #fff;">
@@ -2143,7 +2152,7 @@
           <span style="color: #0b79bf; font-weight: 700;">takealot</span>.credit
         </div>
         <p style="font-size: 13px; line-height: 1.4; color: #333;">
-          Buy using takealot.credit for <strong>R 2 855</strong> p/m x 12 months and get 1% of your purchase back*.
+          Buy using takealot.credit for <strong>R 139</strong> p/m x 12 months and get 1% of your purchase back*.
         </p>
         <div
           style="background: #f4f4f4; padding: 10px; font-size: 12px; border-radius: 4px; margin-top: 10px; display: flex; align-items: center; gap: 8px;">
@@ -2156,13 +2165,13 @@
             <div
               style="background: #f2b01e; border-radius: 50%; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700;">
               eB</div>
-            <span style="font-size: 13px;">eB 306,990</span>
+            <span style="font-size: 13px;">eB 14,970</span>
           </div>
           <div style="display: flex; align-items: center; gap: 8px;">
             <div
               style="background: #0b79bf; color: #fff; border-radius: 50%; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700;">
               D</div>
-            <span style="font-size: 13px;">306,990</span>
+            <span style="font-size: 13px;">14,970</span>
           </div>
         </div>
       </div>
@@ -2180,11 +2189,11 @@
           <div class="hot-badge">HOT OFFER 🔥</div>
           <div class="main-price">
             <span class="currency">R</span>
-            <span class="price">30,699</span>
+            <span class="price">1,497</span>
           </div>
 
           <div class="was-price">
-            <span class="was">R34,999</span>
+            <span class="was">R 1,999</span>
             <svg class="info-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
               stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <circle cx="12" cy="12" r="9"></circle>
@@ -2829,25 +2838,38 @@
       });
     });
 
-    // swipe no mobile (arrastar na imagem)
-    const box = document.querySelector(".hero__imgbox");
-    if (box) {
-      let startX = 0;
+    // Color Selection Logic
+    const colorOpts = Array.from(document.querySelectorAll(".color-opt"));
+    const colorToImageMap = {
+      "Cosmic Orange": "i1.png",
+      "Deep Blue": "deep-blue.png",
+      "Silver": "silver.png"
+    };
 
-      box.addEventListener("touchstart", (e) => {
-        startX = e.touches[0].clientX;
-      }, { passive: true });
+    colorOpts.forEach(opt => {
+      opt.addEventListener("click", () => {
+        // Remove active from all
+        colorOpts.forEach(c => c.classList.remove("is-active"));
+        // Add active to clicked
+        opt.classList.add("is-active");
 
-      box.addEventListener("touchend", (e) => {
-        const endX = e.changedTouches[0].clientX;
-        const diff = endX - startX;
+        const color = opt.getAttribute("data-color");
+        const imagePath = colorToImageMap[color];
 
-        if (Math.abs(diff) > 45) {
-          if (diff < 0) setActive(currentIndex + 1); // esquerda = próxima
-          else setActive(currentIndex - 1);         // direita = anterior
+        if (imagePath && productImage) {
+          productImage.style.opacity = "0.5";
+          setTimeout(() => {
+            productImage.src = imagePath;
+            productImage.style.opacity = "1";
+          }, 150);
+
+          // Update dots/thumbs to -1 or 0 to clear selection if needed
+          // Or map them specifically. For now just change source.
         }
-      }, { passive: true });
-    }
+      });
+    });
+
+    // Swipe logic removed as requested (blocked)
 
     // inicializa
     setActive(0);
