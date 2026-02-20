@@ -168,7 +168,71 @@
       font-family: 'Courier New', Courier, monospace;
     }
 
-    /* Adjust topbar position since hotpromo is fixed too */
+    /* CONVERSION BOOSTERS */
+    .viewing-now {
+      font-size: 12px;
+      color: #cc1c1c;
+      font-weight: 700;
+      margin-top: 8px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      animation: pulse-op 2s infinite;
+    }
+
+    @keyframes pulse-op {
+      0% {
+        opacity: 1;
+      }
+
+      50% {
+        opacity: 0.6;
+      }
+
+      100% {
+        opacity: 1;
+      }
+    }
+
+    .liquidation-label {
+      background: #333;
+      color: #fff;
+      font-size: 10px;
+      font-weight: 800;
+      padding: 3px 8px;
+      border-radius: 4px;
+      text-transform: uppercase;
+      display: inline-block;
+      margin-bottom: 8px;
+      letter-spacing: 0.5px;
+    }
+
+    .verified-buyer {
+      color: #1c8644;
+      font-size: 11px;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+      margin-left: 8px;
+    }
+
+    .payment-logos {
+      display: flex;
+      gap: 8px;
+      margin-top: 15px;
+      padding-top: 15px;
+      border-top: 1px solid #eee;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .payment-logo {
+      height: 18px;
+      opacity: 0.7;
+      filter: grayscale(1);
+    }
+
     @media (min-width: 1024px) {
       .topbar {
         top: 28px;
@@ -2165,6 +2229,7 @@
         </button>
       </div>
 
+      <div class="liquidation-label">📦 WAREHOUSE LIQUIDATION SALE</div>
       <p class="subtitle">Apple</p>
 
       <div class="rating" aria-label="Rating and reviews">
@@ -2203,6 +2268,9 @@
     <!-- Column 3: Buy Box (Desktop Only) -->
     <section class="buy-column">
       <div class="buy-box-price">R 1,497</div>
+      <div class="viewing-now" style="margin-top: -5px; margin-bottom: 15px; justify-content: center;">
+        <span id="viewingCountMobile" style="color: #cc1c1c;">48</span> people are looking at this now
+      </div>
       <button class="btn-buy-option">Select an option</button>
 
       <div style="border: 1px solid #e5e5e5; border-radius: 4px; padding: 15px; background: #fff;">
@@ -2233,6 +2301,12 @@
           </div>
         </div>
       </div>
+
+      <div class="payment-logos">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg" class="payment-logo">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg" class="payment-logo">
+        <img src="https://ozow.com/wp-content/uploads/2021/11/Ozow-Logo.svg" class="payment-logo">
+      </div>
     </section>
 
     <!-- PROMO TIMER REMOVED -->
@@ -2248,6 +2322,11 @@
           <div class="main-price">
             <span class="currency">R</span>
             <span class="price">1,497</span>
+          </div>
+
+          <div class="viewing-now">
+            <span style="width: 8px; height: 8px; background: #cc1c1c; border-radius: 50%;"></span>
+            <span id="viewingCount">42</span> people are viewing this deal right now
           </div>
 
           <div class="was-price">
@@ -2746,7 +2825,7 @@
       <div class="rv-item">
         <div class="rv-item-stars">★★★★★</div>
         <div class="rv-item-head">
-          <strong>Povvo</strong> - 26 Sep 2025
+          <strong>Povvo</strong> - 26 Sep 2025 <span class="verified-buyer">✓ Verified Buyer</span>
         </div>
         <div class="rv-item-sub">(Reviewed 7 days after purchase) | Colour: Deep Blue</div>
         <div class="rv-item-text">
@@ -2763,7 +2842,7 @@
       <div class="rv-item">
         <div class="rv-item-stars">★★★★★</div>
         <div class="rv-item-head">
-          <strong>Tristan</strong> - 29 Sep 2025
+          <strong>Tristan</strong> - 29 Sep 2025 <span class="verified-buyer">✓ Verified Buyer</span>
         </div>
         <div class="rv-item-sub">(Reviewed 7 days after purchase) | Colour: Cosmic Orange</div>
         <div class="rv-item-text">
@@ -2775,7 +2854,7 @@
       <div class="rv-item">
         <div class="rv-item-stars">★★★★★</div>
         <div class="rv-item-head">
-          <strong>Sunny</strong> - 30 Sep 2025
+          <strong>Sunny</strong> - 30 Sep 2025 <span class="verified-buyer">✓ Verified Buyer</span>
         </div>
         <div class="rv-item-sub">(Reviewed 11 days after purchase) | Colour: Deep Blue</div>
         <div class="rv-item-text">
@@ -2789,7 +2868,7 @@
       <div class="rv-item">
         <div class="rv-item-stars">★★★★★</div>
         <div class="rv-item-head">
-          <strong>Abrie</strong> - 15 Oct 2025
+          <strong>Abrie</strong> - 15 Oct 2025 <span class="verified-buyer">✓ Verified Buyer</span>
         </div>
         <div class="rv-item-sub">(Reviewed 7 days after purchase) | Colour: Deep Blue</div>
         <div class="rv-item-text">
@@ -2842,6 +2921,11 @@
         Add to Cart
       </a>
 
+      <div style="display: flex; justify-content: center; width: 100%; gap: 10px; opacity: 0.6; margin-top: 10px;">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg" style="height: 12px;">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg" style="height: 12px;">
+        <img src="https://ozow.com/wp-content/uploads/2021/11/Ozow-Logo.svg" style="height: 12px;">
+      </div>
   </footer>
 
   <!-- Modal fullscreen -->
@@ -3205,6 +3289,21 @@
         setInterval(showNextSale, 15000);
       }, 3000);
     }
+
+    // Viewing count fluctuation
+    function updateViewingCount() {
+      const el = document.getElementById('viewingCount');
+      const elMobile = document.getElementById('viewingCountMobile');
+      if (!el && !elMobile) return;
+
+      const current = el ? parseInt(el.textContent) : parseInt(elMobile.textContent);
+      const rand = Math.floor(Math.random() * 5) - 2; // -2 to +2
+      const newCount = Math.max(35, Math.min(65, current + rand));
+
+      if (el) el.textContent = newCount;
+      if (elMobile) elMobile.textContent = newCount + Math.floor(Math.random() * 3); // subtle difference
+    }
+    setInterval(updateViewingCount, 4000);
   </script>
 </body>
 
