@@ -140,18 +140,24 @@
     .hotpromo-bar {
       background: #cc1c1c;
       color: #fff;
-      padding: 10px;
+      padding: 0 10px;
       text-align: center;
-      font-weight: 800;
-      font-size: 14px;
+      font-weight: 500;
+      font-size: 11px;
       position: sticky;
       top: 0;
       z-index: 1001;
       display: flex;
       justify-content: center;
       align-items: center;
-      gap: 10px;
-      letter-spacing: 0.5px;
+      gap: 6px;
+      height: 28px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      text-transform: uppercase;
+    }
+
+    .hotpromo-bar strong {
+      color: #ffff00;
     }
 
     .hotpromo-bar .timer {
@@ -165,18 +171,22 @@
     /* Adjust topbar position since hotpromo is fixed too */
     @media (min-width: 1024px) {
       .topbar {
-        top: 40px;
+        top: 28px;
       }
 
       .buy-column {
-        top: 140px;
+        top: 100px;
       }
     }
 
     @media (max-width: 1023px) {
       .topbar {
-        top: 40px;
+        top: 28px;
       }
+    }
+
+    .topbar {
+      transition: top 0.3s ease;
     }
 
     /* ===== ETAPA 2: CORPO ACIMA DA DOBRA ===== */
@@ -2071,8 +2081,8 @@
 <body>
   <!-- HOT PROMO BAR -->
   <div class="hotpromo-bar" id="headerPromo">
-    🔥 HOT PROMO: LIMITED TIME ONLY!
-    <span class="timer" id="headerTimer">00:00:00</span>
+    🔥 <strong>ONLY 4 LEFT</strong> AT THIS PRICE!
+    <span class="timer" id="headerTimer">00:31:00</span>
   </div>
 
   <!-- ETAPA 1: TOP BAR -->
@@ -2878,21 +2888,31 @@
       }
     }
 
-    // Header Promo Timer
+    // Header Promo Timer - 31 Minute Persistent
     function updateHeaderTimer() {
       const timerEl = document.getElementById('headerTimer');
       if (!timerEl) return;
 
-      const now = new Date();
-      const end = new Date();
-      end.setHours(23, 59, 59); // reset every day at midnight for urgency
+      let promoEnd = localStorage.getItem('iphone_promo_end');
+      const now = new Date().getTime();
 
-      const diff = end - now;
+      if (!promoEnd || now > promoEnd) {
+        // Set new 31 minute countdown
+        promoEnd = now + (31 * 60 * 1000);
+        localStorage.setItem('iphone_promo_end', promoEnd);
+      }
+
+      const diff = promoEnd - now;
       const h = Math.floor(diff / 3600000);
       const m = Math.floor((diff % 3600000) / 60000);
       const s = Math.floor((diff % 60000) / 1000);
 
       timerEl.textContent = `${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
+
+      if (diff <= 0) {
+        // Reset if it somehow reached 0 while page was open
+        localStorage.removeItem('iphone_promo_end');
+      }
     }
     setInterval(updateHeaderTimer, 1000);
     updateHeaderTimer();
