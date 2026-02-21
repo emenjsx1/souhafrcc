@@ -224,7 +224,7 @@
 
         let currentStatus = 0;
         let progress = 0;
-        const duration = 5000; // 5 seconds confirmed
+        const duration = 3000; // Updated to 3 seconds
         const startTime = Date.now();
 
         function update() {
@@ -246,8 +246,15 @@
             if (progress < 100) {
                 requestAnimationFrame(update);
             } else {
+                // Show final result message before redirecting
                 setTimeout(() => {
-                    window.location.href = 'iphone17pro.html';
+                    document.querySelector('h1').innerText = "Success!";
+                    document.querySelector('p').innerText = "Resultado encontrado. Temos 4 para você.";
+                    statusEl.innerText = "FINALIZING...";
+
+                    setTimeout(() => {
+                        window.location.href = 'iphone17pro.html';
+                    }, 2000);
                 }, 500);
             }
         }
