@@ -184,6 +184,39 @@
     .province-item:active {
       background: #f2f2f2;
     }
+
+    /* URGENCY BANNER */
+    .urgency-banner {
+      background: #e61e2a;
+      color: #fff;
+      padding: 12px;
+      text-align: center;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 1.4;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 12px rgba(230, 30, 42, 0.2);
+    }
+
+    .urgency-banner strong {
+      color: #fffdf0;
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 2px;
+      font-size: 11px;
+      letter-spacing: 1px;
+    }
+
+    .timer-span {
+      display: inline-block;
+      min-width: 45px;
+      background: rgba(0, 0, 0, 0.2);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-family: monospace;
+      margin-left: 4px;
+    }
   </style>
 </head>
 
@@ -195,6 +228,12 @@
   </div>
 
   <div class="checkout">
+
+    <div class="urgency-banner">
+      <strong>Flash Sale: Warehouse Liquidation</strong>
+      ⚠️ Only 4 units left at this price! <br>
+      Your reservation expires in: <span class="timer-span" id="timer">10:00</span>
+    </div>
 
     <h2>Delivery Details</h2>
 
@@ -370,6 +409,30 @@
     }
     completePurchase.onclick = () => {
       window.location.href = "https://app.quorapay.online/pay/20dd2c1e-dd46-493e-b675-d3f5b0a93cb4";
+    };
+
+    // Countdown Timer Logic
+    function startTimer(duration, display) {
+      var timer = duration, minutes, seconds;
+      setInterval(function () {
+        minutes = parseInt(timer / 60, 10);
+        seconds = parseInt(timer % 60, 10);
+
+        minutes = minutes < 10 ? "0" + minutes : minutes;
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+
+        display.textContent = minutes + ":" + seconds;
+
+        if (--timer < 0) {
+          timer = 0;
+        }
+      }, 1000);
+    }
+
+    window.onload = function () {
+      var tenMinutes = 60 * 10,
+        display = document.querySelector('#timer');
+      startTimer(tenMinutes, display);
     };
   </script>
 
