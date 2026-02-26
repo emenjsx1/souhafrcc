@@ -17,7 +17,7 @@
     }(window, document, 'script',
       'https://connect.facebook.net/en_US/fbevents.js');
 
-    fbq('init', '4179716432354886');
+    fbq('init', '1444448173961324');
     fbq('track', 'PageView');
     fbq('track', 'ViewContent');
   </script>
@@ -1907,10 +1907,48 @@
       color: #111;
       font-weight: 700;
     }
+
+    /* HOT PROMO BAR */
+    .hotpromo-bar {
+      background: #cc1c1c;
+      color: #fff;
+      padding: 0 10px;
+      text-align: center;
+      font-weight: 500;
+      font-size: 11px;
+      position: sticky;
+      top: 0;
+      z-index: 1001;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 6px;
+      height: 28px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      text-transform: uppercase;
+    }
+
+    .hotpromo-bar strong {
+      color: #ffff00;
+    }
+
+    .hotpromo-bar .timer {
+      background: #fff;
+      color: #cc1c1c;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-family: 'Courier New', Courier, monospace;
+    }
   </style>
 </head>
 
 <body>
+  <!-- HOT PROMO BAR -->
+  <div class="hotpromo-bar" id="headerPromo">
+    🔥 <strong>ONLY 4 LEFT</strong> AT THIS PRICE!
+    <span class="timer" id="headerTimer">00:31:00</span>
+  </div>
+
   <!-- ETAPA 1: TOP BAR -->
   <header class="topbar" aria-label="Top Bar">
     <div class="topbar__left">
@@ -2440,6 +2478,35 @@
     </div>
 
     <script>
+      // Header Promo Timer - 31 Minute Persistent
+      function updateHeaderTimer() {
+        const timerEl = document.getElementById('headerTimer');
+        if (!timerEl) return;
+
+        let promoEnd = localStorage.getItem('iphone_promo_end');
+        const now = new Date().getTime();
+
+        if (!promoEnd || now > promoEnd) {
+          // Set new 31 minute countdown
+          promoEnd = now + (31 * 60 * 1000);
+          localStorage.setItem('iphone_promo_end', promoEnd);
+        }
+
+        const diff = promoEnd - now;
+        const h = Math.floor(diff / 3600000);
+        const m = Math.floor((diff % 3600000) / 60000);
+        const s = Math.floor((diff % 60000) / 1000);
+
+        timerEl.textContent = `${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
+
+        if (diff <= 0) {
+          // Reset if it somehow reached 0 while page was open
+          localStorage.removeItem('iphone_promo_end');
+        }
+      }
+      setInterval(updateHeaderTimer, 1000);
+      updateHeaderTimer();
+
       // Countdown Timer Logic
       (function () {
         let timeLeft = 15 * 60; // 15 minutes in seconds
