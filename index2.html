@@ -40,11 +40,9 @@
       --muted: #7a7a7a;
       --bg: #ffffff;
 
-      --blue: #0b6ecb;
-      --green: #178a3b;
-      /* add to cart */
+      --blue: #f68b1e;
+      --green: #f68b1e;
       --danger: #ff5a5f;
-      /* contorno do botão esquerdo */
     }
 
     .add-btn,
@@ -130,11 +128,18 @@
     }
 
     .logo-img {
-      height: 28px;
+      height: 24px;
       width: auto;
       display: block;
       object-fit: contain;
       pointer-events: none;
+    }
+
+    .jumia-badge {
+      font-weight: 800;
+      color: #f68b1e;
+      font-size: 20px;
+      letter-spacing: -0.5px;
     }
 
     /* ===== ETAPA 2: CORPO ACIMA DA DOBRA ===== */
@@ -1959,8 +1964,8 @@
       </button>
     </div>
 
-    <div class="topbar__center" aria-label="Takealot logo">
-      <img src="logo-takealot.svg" alt="takealot.com" class="logo-img" />
+    <div class="topbar__center">
+      <span class="jumia-badge" style="font-weight: 900; color: #f68b1e; font-size: 20px;">JUMIA</span>
     </div>
 
     <div class="topbar__right">
@@ -2063,7 +2068,6 @@
         <div class="stock-bar__fill"></div>
       </div>
     </div>
-    Riverside check: I am adding the countdown timer tasks.
 
     <!-- PRICE (apenas 1 preço) -->
     <section class="single-price" aria-label="Price and delivery">
@@ -2071,25 +2075,17 @@
         <div class="price-left">
           <div class="hot-badge">HOT OFFER 🔥</div>
           <div class="main-price">
-            <span class="currency">R</span>
-            <span class="price">799</span>
+            <span class="currency">₦</span>
+            <span class="price">59,900</span>
           </div>
 
-          <div class="was-price">
-            <span class="was">R1,299</span>
-            <svg class="info-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-              stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <circle cx="12" cy="12" r="9"></circle>
-              <path d="M12 10v6"></path>
-              <path d="M12 7h.01"></path>
-            </svg>
-          </div>
+          <div class="old-price" style="text-decoration: line-through; color: #777;">₦ 120,500</div>
 
           <div class="est-delivery">
             <span class="muted">Estimated Delivery</span>
-            <span class="pill">CPT</span>
-            <span class="pill">DBN</span>
-            <span class="pill">JHB</span>
+            <span class="pill">LAG</span>
+            <span class="pill">ABJ</span>
+            <span class="pill">PHC</span>
           </div>
 
           <!-- aqui entra data dinâmica ou "Get It Tomorrow!" -->
@@ -2102,55 +2098,10 @@
     </section>
 
 
-    <!-- FREE DELIVERY WITH TAKEALOTMORE -->
+    <!-- FREE DELIVERY WITH JUMIA PRIME -->
     <section class="takealotmore">
-      <div class="takealotmore-box">
+      <div class="takealotmore-box" style="background: #fff5f5; padding: 10px; border: 1px solid #f68b1e; border-radius: 4px;">
         <span class="takealotmore-text">
-          FREE DELIVERY WITH <strong>TAKEALOTMORE</strong>
-        </span>
-      </div>
-  </div>
-
-  <div class="card credit-card" aria-label="takealot credit">
-    <div class="credit-brand">
-      <span class="credit-takealot">takealot</span><span class="credit-dot">.</span><span
-        class="credit-credit">credit</span>
-    </div>
-
-    <p class="credit-text">
-      Buy using <strong>takealot.credit</strong> for <strong>R 67</strong> p/m x <strong>12</strong><br>
-      months and get <strong>1%</strong> of your purchase back*.
-    </p>
-
-    <div class="credit-more">
-      <div class="credit-more-inner">
-        Get 3% with <span class="credit-more-logo">takealot<span>more</span></span>
-      </div>
-      <a class="credit-options" href="#" aria-label="More Credit Options">More Credit Options</a>
-    </div>
-  </div>
-
-  <div class="card reward-row" aria-label="eBucks">
-    <div class="reward-left">
-      <div class="reward-badge eb">eB</div>
-      <div class="reward-name">
-        <span class="reward-name-accent">e</span>Bucks
-      </div>
-    </div>
-    <div class="reward-value">eB10,990</div>
-  </div>
-
-  <div class="card reward-row" aria-label="Discovery Miles">
-    <div class="reward-left">
-      <div class="reward-d">D</div>
-      <div class="reward-name miles">
-        <span class="miles-top">Discovery</span>
-        <span class="miles-bottom">MILES</span>
-      </div>
-    </div>
-    <div class="reward-value">10,990</div>
-  </div>
-  </section>
 
   <!-- STOCK / DELIVERY BLOCK (Takealot-like) -->
   <section class="ta-stock" aria-label="Stock and delivery information">
@@ -2544,14 +2495,14 @@
         document.body.appendChild(salesPopup);
 
         const names = [
-          "Sarah from Cape Town",
-          "John from Johannesburg",
-          "Thabo from Pretoria",
-          "Linda from Durban",
-          "Michael from Port Elizabeth",
-          "Zanele from Soweto",
-          "David from Bloemfontein",
-          "Nomsa from East London"
+          "Abike from Lagos",
+          "Chinedu from Abuja",
+          "Aminu from Kano",
+          "Blessing from Rivers",
+          "Tunde from Ibadan",
+          "Fatimah from Kaduna",
+          "Ikechuku from Enugu",
+          "Ngozi from Onitsha"
         ];
 
         function showNotification() {

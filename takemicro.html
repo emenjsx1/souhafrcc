@@ -30,7 +30,7 @@
 
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Russell Hobbs 20L Digital Microwave + Kettle Bundle - Takealot</title>
+  <title>Jumia Nigeria: 20L Digital Microwave + 1.7L Kettle Bundle</title>
 
   <style>
     :root {
@@ -40,11 +40,9 @@
       --muted: #7a7a7a;
       --bg: #ffffff;
 
-      --blue: #0b6ecb;
-      --green: #178a3b;
-      /* add to cart */
+      --blue: #f68b1e;
+      --green: #f68b1e;
       --danger: #ff5a5f;
-      /* contorno do botão esquerdo */
     }
 
     .add-btn,
@@ -130,11 +128,18 @@
     }
 
     .logo-img {
-      height: 28px;
+      height: 24px;
       width: auto;
       display: block;
       object-fit: contain;
       pointer-events: none;
+    }
+
+    .jumia-badge {
+      font-weight: 800;
+      color: #f68b1e;
+      font-size: 20px;
+      letter-spacing: -0.5px;
     }
 
     /* ===== ETAPA 2: CORPO ACIMA DA DOBRA ===== */
@@ -1959,8 +1964,8 @@
       </button>
     </div>
 
-    <div class="topbar__center" aria-label="Takealot logo">
-      <img src="logo-takealot.svg" alt="takealot.com" class="logo-img" />
+    <div class="topbar__center">
+      <span class="jumia-badge" style="font-weight: 900; color: #f68b1e; font-size: 20px;">JUMIA</span>
     </div>
 
     <div class="topbar__right">
@@ -2064,7 +2069,6 @@
         <div class="stock-bar__fill"></div>
       </div>
     </div>
-    Riverside check: I am adding the countdown timer tasks.
 
     <!-- PRICE (apenas 1 preço) -->
     <section class="single-price" aria-label="Price and delivery">
@@ -2072,25 +2076,17 @@
         <div class="price-left">
           <div class="hot-badge">HOT OFFER 🔥</div>
           <div class="main-price">
-            <span class="currency">R</span>
-            <span class="price">597</span>
+            <span class="currency">₦</span>
+            <span class="price" id="main-price">42,500</span>
           </div>
 
-          <div class="was-price">
-            <span class="was">R1,299</span>
-            <svg class="info-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-              stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <circle cx="12" cy="12" r="9"></circle>
-              <path d="M12 10v6"></path>
-              <path d="M12 7h.01"></path>
-            </svg>
-          </div>
+          <div class="old-price" style="text-decoration: line-through; color: #777;">₦ 65,000</div>
 
           <div class="est-delivery">
             <span class="muted">Estimated Delivery</span>
-            <span class="pill">CPT</span>
-            <span class="pill">DBN</span>
-            <span class="pill">JHB</span>
+            <span class="pill">Lagos</span>
+            <span class="pill">Abuja</span>
+            <span class="pill">PH</span>
           </div>
 
           <!-- aqui entra data dinâmica ou "Get It Tomorrow!" -->
@@ -2098,60 +2094,14 @@
             <span class="delivery-range" id="singleDeliveryRange">Get It Tomorrow!</span>
             <a class="tcs" href="#">T&Cs Apply</a>
           </div>
-
-        </div>
-    </section>
-
-
-    <!-- FREE DELIVERY WITH TAKEALOTMORE -->
+    <!-- FREE DELIVERY WITH JUMIA PRIME -->
     <section class="takealotmore">
-      <div class="takealotmore-box">
-        <span class="takealotmore-text">
-          FREE DELIVERY WITH <strong>TAKEALOTMORE</strong>
+      <div class="takealotmore-box" style="border: 1px dashed #f68b1e; border-radius: 12px; background: #fff; padding: 14px 12px; text-align: center;">
+        <span class="takealotmore-text" style="font-size: 14px; font-weight: 700; color: #6a6a6a;">
+          Enjoy FREE Delivery with <strong>Jumia Prime</strong>
         </span>
       </div>
-  </div>
-
-  <div class="card credit-card" aria-label="takealot credit">
-    <div class="credit-brand">
-      <span class="credit-takealot">takealot</span><span class="credit-dot">.</span><span
-        class="credit-credit">credit</span>
-    </div>
-
-    <p class="credit-text">
-      Buy using <strong>takealot.credit</strong> for <strong>R 50</strong> p/m x <strong>12</strong><br>
-      months and get <strong>1%</strong> of your purchase back*.
-    </p>
-
-    <div class="credit-more">
-      <div class="credit-more-inner">
-        Get 3% with <span class="credit-more-logo">takealot<span>more</span></span>
-      </div>
-      <a class="credit-options" href="#" aria-label="More Credit Options">More Credit Options</a>
-    </div>
-  </div>
-
-  <div class="card reward-row" aria-label="eBucks">
-    <div class="reward-left">
-      <div class="reward-badge eb">eB</div>
-      <div class="reward-name">
-        <span class="reward-name-accent">e</span>Bucks
-      </div>
-    </div>
-    <div class="reward-value">eB10,990</div>
-  </div>
-
-  <div class="card reward-row" aria-label="Discovery Miles">
-    <div class="reward-left">
-      <div class="reward-d">D</div>
-      <div class="reward-name miles">
-        <span class="miles-top">Discovery</span>
-        <span class="miles-bottom">MILES</span>
-      </div>
-    </div>
-    <div class="reward-value">10,990</div>
-  </div>
-  </section>
+    </section>
 
   <!-- STOCK / DELIVERY BLOCK (Takealot-like) -->
   <section class="ta-stock" aria-label="Stock and delivery information">
@@ -2159,9 +2109,9 @@
       <div class="ta-stock__title">In stock</div>
 
       <div class="ta-stock__pills" aria-label="Regions">
-        <span class="ta-pill">CPT</span>
-        <span class="ta-pill">DBN</span>
-        <span class="ta-pill">JHB</span>
+        <span class="ta-pill">LOS</span>
+        <span class="ta-pill">ABV</span>
+        <span class="ta-pill">PHC</span>
       </div>
 
       <a class="ta-stock__link" href="#" aria-label="Learn more">Learn More</a>
@@ -2242,10 +2192,7 @@
     <div class="desc-box" id="descBox">
       <div class="desc-content" id="descContent">
         <p>
-          This Premium Electric Stove & Cookware Set is designed for high-performance cooking. The 4-plate electric
-          stove features
-          precision heat control and a heavy-duty stainless steel finish, while the 7-piece pot set offers superior
-          heat distribution for all your culinary needs.
+          This Jumia Kitchen Bundle is the perfect addition to your home. It features a high-performance 20L Digital Microwave with multiple power levels and a rapid-boil 1.7L Stainless Steel Kettle for all your hot beverage and cooking preparations.
         </p>
 
         <p class="desc-subhead">Features:</p>
@@ -2262,21 +2209,20 @@
 
         <p class="desc-subhead">Specifications:</p>
         <ul class="desc-list">
-          <li>Weight: 14.2kg.</li>
-          <li>Stove Dimensions: 55 x 50 x 20cm.</li>
-          <li>Pot Sizes: 16cm, 18cm, 20cm, 24cm.</li>
-          <li>Material: Premium Stainless Steel &amp; Cast Iron.</li>
-          <li>Colour: Polished Silver.</li>
-          <li>Cooking Zones: 4 Electric Hotplates.</li>
-          <li>Power: 3000W total.</li>
-          <li>Warranty: 24 Months replacement guarantee.</li>
+          <li>Microwave Capacity: 20 Litres.</li>
+          <li>Kettle Capacity: 1.7 Litres.</li>
+          <li>Microwave Power: 700W.</li>
+          <li>Kettle Power: 2200W.</li>
+          <li>Material: High-quality Plastic & Stainless Steel.</li>
+          <li>Colour: Black & Silver.</li>
+          <li>Warranty: 12 Months Jumia Warranty.</li>
         </ul>
 
         <p class="desc-subhead">What's in the box</p>
         <p>
-          1 x 4-Burner Gas Stove<br>
-          1 x 7-Piece Stainless Steel Cookware Set<br>
-          1 x Set of Burner Caps
+          1 x 20L Digital Microwave<br>
+          1 x 1.7L Stainless Steel Kettle<br>
+          1 x User Manual
         </p>
       </div>
     </div>
@@ -2300,13 +2246,9 @@
         <div class="pi-key">Categories</div>
         <div class="pi-val pi-links">
           <a href="#">Home &amp; Kitchen</a> /<br>
-          <a href="#">Small Kitchen Appliances</a> /<br>
-          <a href="#">Cooking Appliances</a> /<br>
-          <a href="#">Stoves &amp; Hobs</a><br><br>
-          <a href="#">Home &amp; Kitchen</a> /<br>
-          <a href="#">Large Appliances</a> /<br>
-          <a href="#">Kitchen Ranges</a> /<br>
-          <a href="#">Gas Stoves</a>
+          <a href="#">Small Appliances</a> /<br>
+          <a href="#">Microwaves &amp; Ovens</a> /<br>
+          <a href="#">Digital Microwaves</a>
         </div>
       </div>
 
@@ -2317,7 +2259,7 @@
 
       <div class="pi-row">
         <div class="pi-key">Power</div>
-        <div class="pi-val">700 W</div>
+        <div class="pi-val">700W (Microwave)</div>
       </div>
     </div>
 
@@ -2543,14 +2485,14 @@
         document.body.appendChild(salesPopup);
 
         const names = [
-          "Sarah from Cape Town",
-          "John from Johannesburg",
-          "Thabo from Pretoria",
-          "Linda from Durban",
-          "Michael from Port Elizabeth",
-          "Zanele from Soweto",
-          "David from Bloemfontein",
-          "Nomsa from East London"
+          "Abike from Lagos",
+          "Chinedu from Abuja",
+          "Aminu from Kano",
+          "Blessing from Rivers",
+          "Tunde from Ibadan",
+          "Fatimah from Kaduna",
+          "Ikechuku from Enugu",
+          "Ngozi from Onitsha"
         ];
 
         function showNotification() {
@@ -2768,10 +2710,7 @@
     <img id="modalImg" src="m1.jpg" alt="Expanded product image">
   </div>
 
-  <!-- TAKEALOT CREDIT IMAGE BANNER -->
-  <div class="footer-banner">
-    <img src="takealot-credit.png" alt="takealot.credit shop now pay later" loading="lazy">
-  </div>
+
 
 
   <script>
