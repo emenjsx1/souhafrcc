@@ -21,7 +21,7 @@
     <!-- End Facebook Pixel -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Track Your Order - Takealot</title>
+    <title>Track Your Order - Jumia</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
@@ -116,7 +116,7 @@
         .product-row .prod-price {
             font-size: 15px;
             font-weight: 800;
-            color: #0b6ecb;
+            color: #f68b1e;
             margin-top: 4px;
         }
 
@@ -140,7 +140,7 @@
         }
 
         .countdown-box {
-            background: linear-gradient(135deg, #0b6ecb, #0a5db0);
+            background: #f68b1e;
             color: #fff;
             border-radius: 12px;
             padding: 12px 16px;
@@ -169,12 +169,12 @@
 
         /* ETA BAR */
         .eta-bar {
-            background: #f0f7ff;
-            border: 1px solid #c8e0f9;
+            background: #fff8f0;
+            border: 1px solid #f68b1e;
             border-radius: 10px;
             padding: 12px 16px;
             font-size: 13px;
-            color: #0b6ecb;
+            color: #f68b1e;
             font-weight: 600;
             text-align: center;
             margin-bottom: 24px;
@@ -239,22 +239,22 @@
         }
 
         .step.active .step-dot {
-            background: #0b6ecb;
-            box-shadow: 0 0 0 4px rgba(11, 110, 203, 0.15);
+            background: #f68b1e;
+            box-shadow: 0 0 0 4px rgba(246, 139, 30, 0.15);
             animation: pulse-dot 2s infinite;
         }
 
         @keyframes pulse-dot {
             0% {
-                box-shadow: 0 0 0 0 rgba(11, 110, 203, 0.4);
+                box-shadow: 0 0 0 0 rgba(246, 139, 30, 0.4);
             }
 
             70% {
-                box-shadow: 0 0 0 8px rgba(11, 110, 203, 0);
+                box-shadow: 0 0 0 8px rgba(246, 139, 30, 0);
             }
 
             100% {
-                box-shadow: 0 0 0 0 rgba(11, 110, 203, 0);
+                box-shadow: 0 0 0 0 rgba(246, 139, 30, 0);
             }
         }
 
@@ -276,7 +276,7 @@
         }
 
         .step.active .step-desc {
-            color: #0b6ecb;
+            color: #f68b1e;
             font-weight: 500;
         }
 
@@ -341,7 +341,7 @@
 
         .submit-btn {
             width: 100%;
-            background: linear-gradient(135deg, #0b6ecb, #0a5db0);
+            background: #f68b1e;
             color: #fff;
             border: none;
             border-radius: 12px;
@@ -406,7 +406,7 @@
 
     <!-- TOP BAR -->
     <header class="topbar">
-        <img src="logo-takealot.svg" alt="takealot.com" class="logo-img" />
+        <span style="font-weight: 900; color: #f68b1e; font-size: 20px;">JUMIA</span>
     </header>
 
     <div class="wrap">
@@ -414,7 +414,7 @@
         <!-- ORDER CARD -->
         <div class="order-card">
             <h2>📦 Your Order is on its Way!</h2>
-            <div class="order-num" id="orderNum">Order #TKL-<span></span></div>
+            <div class="order-num" id="orderNum">Order #JUM-<span></span></div>
 
             <!-- PRODUCT -->
             <div class="product-row">
@@ -534,7 +534,7 @@
             </div>
         </div>
 
-        <div class="footer">© 2025 Takealot.com · All rights reserved</div>
+        <div class="footer">© 2025 Jumia.com.ng · All rights reserved</div>
     </div>
 
     <script>
@@ -550,7 +550,7 @@
 
         // Show ETA date
         const etaOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-        document.getElementById('etaDate').textContent = DELIVERY_DATE.toLocaleDateString('en-ZA', etaOptions);
+        document.getElementById('etaDate').textContent = DELIVERY_DATE.toLocaleDateString('en-NG', etaOptions);
 
         function pad(n) { return String(n).padStart(2, '0'); }
 
